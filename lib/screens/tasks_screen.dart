@@ -1,9 +1,20 @@
 import 'package:flutter/material.dart';
+import '../models/task.dart';
 import '../widgets/tasks_list.dart';
 import 'add_task_screen.dart';
 
-class TasksScreen extends StatelessWidget {
+class TasksScreen extends StatefulWidget {
 
+  @override
+  State<TasksScreen> createState() => _TasksScreenState();
+}
+
+class _TasksScreenState extends State<TasksScreen> {
+  List<Task> tasks = [
+    Task(name: 'Buy milk'),
+    Task(name: 'Buy eggs'),
+    Task(name: 'Buy bread'),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +33,13 @@ class TasksScreen extends StatelessWidget {
                 builder: (context) => SingleChildScrollView(
                     child:Container(
                       padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
-                      child: AddTaskScreen(),
+                      child: AddTaskScreen(addTaskCallback: (newTaskTitle){
+                        setState(() {
+                          tasks.add(Task(name: newTaskTitle));
+                        });
+                        Navigator.pop(context);
+                      }
+                      ),
                     )
                 )
             );
@@ -33,7 +50,7 @@ class TasksScreen extends StatelessWidget {
         children: [
           Container(
             padding: const EdgeInsets.only(top: 60.0, left: 30.0, right: 30.0, bottom: 30.0),
-            child: const Column(
+            child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 CircleAvatar(
@@ -55,7 +72,7 @@ class TasksScreen extends StatelessWidget {
                   ),
                 ),
                 Text(
-                    '12 tasks',
+                    '${tasks.length} tasks',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 18,
@@ -71,7 +88,7 @@ class TasksScreen extends StatelessWidget {
                 color: Colors.white,
                 borderRadius: BorderRadius.only(topLeft: Radius.circular(20.0), topRight: Radius.circular(20.0)),
               ),
-              child: TasksList(),
+              child: TasksList(tasks: tasks),
             ),
           ),
         ],
