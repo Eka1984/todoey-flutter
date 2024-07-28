@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:todoey_flutter/constants.dart';
+import '../models/task.dart';
+import 'package:provider/provider.dart';
+import 'package:todoey_flutter/models/task_data.dart';
 
 class AddTaskScreen extends StatelessWidget {
-
-    final void Function(String?)? addTaskCallback;
-
-    AddTaskScreen({this.addTaskCallback});
-
 
   @override
   Widget build(BuildContext context) {
 
-    late String? newTaskTitle;
+    String newTaskTitle = '';
 
     return Container(
       padding: EdgeInsets.all(30),
@@ -37,8 +35,12 @@ class AddTaskScreen extends StatelessWidget {
           SizedBox(
             width: double.infinity,
             child: TextButton(
-                onPressed: () {
-                  addTaskCallback!(newTaskTitle);
+                onPressed: () async {
+                  if (newTaskTitle.isNotEmpty) {
+                    Provider.of<TaskData>(context, listen: false).addTask(newTaskTitle);
+                    Navigator.pop(context);
+                    print('Task screen dismissed'); // Debug statement
+                  }
                 },
                 child: Padding(
                   padding: const EdgeInsets.symmetric(vertical: 13.0),
