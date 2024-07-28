@@ -26,4 +26,9 @@ class TaskData extends ChangeNotifier {
     print('Total tasks: ${_tasks.length}'); // Debug statement
   }
 
+  void updateTask(Task task) {
+   task.toggleDone();
+   notifyListeners();
+  }
+
 }
