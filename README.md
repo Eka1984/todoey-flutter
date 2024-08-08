@@ -1,16 +1,20 @@
-# todoey_flutter
+# Todoey Flutter
 
-A new Flutter project.
+Todoey Flutter is a simple task list application designed to help users manage their daily tasks. This app is built with Flutter and leverages various features such as state management with the Provider package, OOP principles, and efficient UI components.
 
-## Getting Started
+## Description
 
-This project is a starting point for a Flutter application.
+Todoey Flutter provides an intuitive task management experience. Users can add new tasks, mark them as complete, and delete them as needed. The app includes a user-friendly interface with a bottom sheet for adding tasks and a list builder for displaying tasks.
 
-A few resources to get you started if this is your first Flutter project:
+## Features
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- **Task Management**: Add, complete, and delete tasks with ease.
+- **State Management**: Efficient state management using the Provider package.
+- **OOP Principles**: Application of Object-Oriented Programming concepts.
+- **BottomSheet Widget**: Intuitive UI for adding new tasks using the BottomSheet widget.
+- **List Builder**: Dynamic and efficient task list display using the ListView.builder.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Demo
+
+![Todoey Flutter Demo](demo/demo.gif)
+
